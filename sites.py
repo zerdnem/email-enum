@@ -37,8 +37,11 @@ def twitterCheck(email):
     if "We couldn't find your account with that information" in driver.page_source:
         result = "Not Found"
         return result
-    if "Enter your email, phone number, or username" not in driver.page_source:
+    if "Enter your email, phone number, or username" not in driver.page_source and "You've exceeded the number of attempts. Please try again later" not in driver.page_source:
         result = "Found"
+        return result
+    if "You've exceeded the number of attempts. Please try again later" in driver.page_source:
+        result = "Exceeded maximum tries, try again later"
         return result
     else:
         result = "Capthca encountered, you'll have to check this manually"
