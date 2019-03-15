@@ -47,7 +47,7 @@ docker build C:\email\enum\path\dockerfile
 docker run <imagename> <target email>
 ```
 
-P.S. I only recommend using a docker container if you're on Windows.
+P.S. The docker file is geared torwards Windows users who want to use Email-Enum.
 
 ## Disclaimer
 
