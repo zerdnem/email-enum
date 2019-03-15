@@ -18,7 +18,7 @@ def instagramCheck(email):
     user.send_keys(Keys.RETURN)
     #driver.find_element_by_tag_name("button").click()
     sleep(1)
-    if "Thanks! Please check" in driver.page_source:
+    if "Thanks! Please check" or "We sent an email to" in driver.page_source:
         result = "Found"
     else:
         result = "Not Found"
