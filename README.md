@@ -14,6 +14,7 @@
 * Selenium => 3.14
 * Click => 7.0
 * Termcolor => 1.1
+* PyFiglet => 0.8
 
 ## Installation
 
