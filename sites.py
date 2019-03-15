@@ -44,7 +44,7 @@ def twitterCheck(email):
         result = "Exceeded maximum tries, try again later"
         return result
     else:
-        result = "Capthca encountered, you'll have to check this manually"
+        result = "Captcha encountered, you'll have to check this manually"
         return result
 
 def snapchatCheck(email):
@@ -59,7 +59,7 @@ def snapchatCheck(email):
         result = "Not Found"
         return result
     if "Email address is invalid" not in driver.page_source and "If you know your current password, you may" in driver.page_source:
-        result = "Capthca encountered, you'll have to check this manually"
+        result = "Captcha encountered, you'll have to check this manually"
         return result
     else:
         result = "Found"
@@ -81,5 +81,5 @@ def facebookCheck(email):
         result = "Found"
         return result
     else:
-        result = "Capthca encountered, you'll have to check this manually"
+        result = "Captcha encountered, you'll have to check this manually"
         return result
