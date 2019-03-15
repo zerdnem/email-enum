@@ -51,4 +51,4 @@ P.S. The docker file is geared torwards Windows users who want to use Email-Enum
 
 ## Disclaimer
 
-This program is done entirely by web scraping, if a website changes its element variables or layout, you might need to wait for an updated version of Email-Enum or feel free to contribute.
+This program is done entirely via web scraping, if a website changes its element variables or layout, you might need to wait for an updated version of Email-Enum or feel free to contribute.
