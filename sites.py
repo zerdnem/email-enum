@@ -15,8 +15,8 @@ def instagramCheck(email):
     sleep(1.5)
     user = driver.find_element_by_id("cppEmailOrUsername")
     user.send_keys(email)
-    driver.find_elements_by_tag_name("button")[1].click()
-    sleep(0.5)
+    driver.find_element_by_tag_name("button").click()
+    sleep(1)
     if "Thanks! Please check" in driver.page_source:
         result = "Found"
     else:
