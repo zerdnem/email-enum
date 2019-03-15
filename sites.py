@@ -10,21 +10,18 @@ def quitSelenium():
     driver.quit()
 
 def instagramCheck(email):
-    driver.get("https://www.instagram.com/accounts/login/")
-    assert "Login" in driver.title
+    driver.get("https://www.instagram.com/accounts/password/reset/")
+    assert "Reset Password" in driver.title
     sleep(1.5)
-    user = driver.find_element_by_name("username")
+    user = driver.find_element_by_id("cppEmailOrUsername")
     user.send_keys(email)
-    driver.find_element_by_xpath('//button["Log in"]').click()
-    sleep(1)
-    if "The username you entered does" in driver.page_source:
-        result = "Not Found"
-        return result
-    if "The username you entered does" not in driver.page_source:
+    driver.find_elements_by_tag_name("button")[1].click()
+    sleep(0.5)
+    if "Thanks! Please check" in driver.page_source:
         result = "Found"
-        return result
     else:
-        print("Captcha encountered, you'll have to check this manually")
+        result = "Not Found"
+    return result
 
 def twitterCheck(email):
     driver.get("https://twitter.com/account/begin_password_reset")
