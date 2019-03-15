@@ -17,14 +17,20 @@
 * PyFiglet => 0.8
 
 ## Installation
-
-Do not run **setup.sh** as root!
+### Linux
 
 ```
 git clone https://github.com/Frint0/email-enum.git
 cd email-enum
 chmod +x setup.sh
 ./setup.sh
+```
+
+### Windows (Docker)
+
+```
+docker build C:\email\enum\path\dockerfile
+docker run <imagename> <target email>
 ```
 
 ## Usage
@@ -39,15 +45,6 @@ chmod +x setup.sh
 * More arguments
 
 *and much more...*
-
-## Dockerizing 
-
-```
-docker build C:\email\enum\path\dockerfile
-docker run <imagename> <target email>
-```
-
-P.S. The docker file is geared torwards Windows users who want to use Email-Enum.
 
 ## Disclaimer
 
