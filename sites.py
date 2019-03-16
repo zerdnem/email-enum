@@ -7,10 +7,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-#options = webdriver.FirefoxOptions()
-#options.add_argument("--headless")
-#driver = webdriver.Firefox(firefox_options=options)
-driver = webdriver.Firefox()
+options = webdriver.FirefoxOptions()
+options.add_argument("--headless")
+driver = webdriver.Firefox(firefox_options=options)
+#driver = webdriver.Firefox()
 
 def quitSelenium():
     driver.quit()
