@@ -3,10 +3,14 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementNotInteractableException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-options = webdriver.FirefoxOptions()
-options.add_argument("--headless")
-driver = webdriver.Firefox(firefox_options=options)
+#options = webdriver.FirefoxOptions()
+#options.add_argument("--headless")
+#driver = webdriver.Firefox(firefox_options=options)
+driver = webdriver.Firefox()
 
 def quitSelenium():
     driver.quit()
@@ -110,7 +114,7 @@ def twitchCheck(email):
     driver.get("https://www.twitch.tv/")
     assert "Discover" in driver.page_source
     driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/nav/div/div[5]/div/div[1]/button").click()
-    sleep(1)
+    waitforuser = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[1]/div/div[2]/input")))
     user = driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[1]/div/div[2]/input")
     password = driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[2]/div/div[1]/div[2]/div[1]/input")
     user.send_keys(email)
