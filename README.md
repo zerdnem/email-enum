@@ -43,6 +43,7 @@ docker run <imagename> <target email>
 * Username Enumeration
 * Increased Verbosity
 * More arguments
+* Non-Headless mode
 
 *and much more...*
 
