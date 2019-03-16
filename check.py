@@ -21,7 +21,7 @@ def emailEnum(email, output):
     try:
         firefox_check = subprocess.check_output(['which', 'firefox'])
     except subprocess.CalledProcessError as exc:
-        print(colored("Firefox not installed or isn't in PATH, exiting...", 'yellow'))
+        print(colored("Firefox is not installed or isn't in PATH, exiting...", 'yellow'))
         sys.exit()
     import sites
     excl = colored("[!] ", "yellow")
