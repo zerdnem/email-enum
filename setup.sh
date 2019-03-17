@@ -9,5 +9,6 @@ pip3 install termcolor --user
 pip3 install selenium --user
 pip3 install pyfiglet --user
 mkdir -p ~/.local/bin/
-chmod +x geckodriver
-mv geckodriver ~/.local/bin/geckodriver
+mv geckodriver /tmp/geckodriver
+chmod +x /tmp/geckodriver
+mv /tmp/geckodriver ~/.local/bin/geckodriver
