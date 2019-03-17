@@ -16,7 +16,7 @@ def asciiBanner():
 def emailEnum(email, output):
     print(colored(asciiBanner(), 'magenta'))
     print(colored("Author: ", 'green') + "Frinto")
-    print(colored("Version: ", 'green') + colored("v1.0", 'yellow'))
+    print(colored("Version: ", 'green') + colored("v1.1", 'yellow'))
     print("\n\n")
     try:
         firefox_check = subprocess.check_output(['which', 'firefox'])

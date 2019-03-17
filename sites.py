@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementNotInteractableException
 from selenium.webdriver.common.by import By
@@ -16,14 +17,22 @@ def quitSelenium():
     driver.quit()
 
 def instagramCheck(email):
-    driver.get("https://www.instagram.com/accounts/password/reset/")
-    assert "Reset Password" in driver.title
+    try:
+        driver.get("https://www.instagram.com/accounts/password/reset/")
+    except WebDriverException:
+        result = "Site could not be reached, try again"
+        return result
+    try:
+        assert "Reset Password" in driver.title
+    except AssertionError:
+        result = "Site could not be loaded properly, try again"
+        return result
     sleep(1.5)
     user = driver.find_element_by_id("cppEmailOrUsername")
     user.send_keys(email)
     user.send_keys(Keys.RETURN)
     #driver.find_element_by_tag_name("button").click()
-    sleep(1)
+    sleep(2)
     if "Thanks! Please check" in driver.page_source:
         result = "Found"
     else:
@@ -31,8 +40,16 @@ def instagramCheck(email):
     return result
 
 def twitterCheck(email):
-    driver.get("https://twitter.com/account/begin_password_reset")
-    assert "Password Reset" in driver.title
+    try:
+        driver.get("https://twitter.com/account/begin_password_reset")
+    except WebDriverException:
+        result = "Site could not be reached, try again"
+        return result
+    try:
+        assert "Password Reset" in driver.title
+    except AssertionError:
+        result = "Site could not be loaded properly, try again"
+        return result
     sleep(1)
     user = driver.find_element_by_name("account_identifier")
     user.send_keys(email)
@@ -52,8 +69,16 @@ def twitterCheck(email):
         return result
 
 def snapchatCheck(email):
-    driver.get("https://accounts.snapchat.com/accounts/password_reset_request")
-    assert "Reset Password" in driver.title
+    try:
+        driver.get("https://accounts.snapchat.com/accounts/password_reset_request")
+    except WebDriverException:
+        result = "Site could not be reached, try again"
+        return result
+    try:
+        assert "Reset Password" in driver.title
+    except AssertionError:
+        result = "Site could not be loaded properly, try again"
+        return result
     sleep(1.5)
     user = driver.find_element_by_name("emailaddress")
     user.send_keys(email)
@@ -70,8 +95,16 @@ def snapchatCheck(email):
         return result
 
 def facebookCheck(email):
-    driver.get("https://www.facebook.com/login/identify/?ctx=recover&ars=royal_blue_bar")
-    assert "Forgot Password" in driver.title
+    try:
+        driver.get("https://www.facebook.com/login/identify/?ctx=recover&ars=royal_blue_bar")
+    except WebDriverException:
+        result = "Site could not be reached, try again"
+        return result
+    try:
+        assert "Forgot Password" in driver.title
+    except AssertionError:
+        result = "Site could not be loaded properly, try again"
+        return result
     sleep(1)
     user = driver.find_element_by_xpath('//*[@id="identify_email"]')
     user.send_keys(email)
@@ -89,8 +122,16 @@ def facebookCheck(email):
         return result
 
 def yougoogleCheck(email):
-    driver.get("https://accounts.google.com/signin/v2/identifier?hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin")
-    assert "Sign in" in driver.title
+    try:
+        driver.get("https://accounts.google.com/signin/v2/identifier?hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin")
+    except WebDriverException:
+        result = "Site could not be reached, try again"
+        return result
+    try:
+        assert "Sign in" in driver.title
+    except AssertionError:
+        result = "Site could not be loaded properly, try again"
+        return result
     sleep(1)
     user = driver.find_element_by_name("identifier")
     user.send_keys(email)
@@ -111,8 +152,15 @@ def yougoogleCheck(email):
             return result
 
 def twitchCheck(email):
-    driver.get("https://www.twitch.tv/")
-    assert "Discover" in driver.page_source
+    try:
+        driver.get("https://www.twitch.tv/")
+    except WebDriverException:
+        result = "Site could not be reached, try again"
+        return result
+    try:
+        assert "Discover" in driver.page_source
+    except AssertionError:
+        result = "Site could not be loaded properly, try again"
     driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/nav/div/div[5]/div/div[1]/button").click()
     waitforuser = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[1]/div/div[2]/input")))
     user = driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[1]/div/div[2]/input")
