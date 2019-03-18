@@ -9,7 +9,7 @@ ENV PATH="$PATH:/home/enum/.local/bin"
 RUN apk add \
         firefox-esr \
         bash; \
-    chmod +x setup.sh; 
+    chmod -R 0777 /home/enum/; 
 
 USER enum
 RUN ./setup.sh;
