@@ -29,8 +29,8 @@ chmod +x setup.sh
 ### Windows (Docker)
 
 ```
-docker build C:\email\enum\path\dockerfile
-docker run <imagename> <target email>
+docker build -t emailenum .
+docker run --rm -it emailenum <target email>
 ```
 
 ## Usage
