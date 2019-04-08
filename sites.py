@@ -101,7 +101,7 @@ def facebookCheck(email):
         result = "Site could not be reached, try again"
         return result
     try:
-        assert "Forgot Password" in driver.title
+        assert "Forgotten Password | Can't Log In | Faceboook" in driver.title
     except AssertionError:
         result = "Site could not be loaded properly, try again"
         return result
@@ -175,4 +175,3 @@ def twitchCheck(email):
     else:
         result = "Found"
         return result
-
