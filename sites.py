@@ -18,22 +18,22 @@ def quitSelenium():
 
 def instagramCheck(email):
     try:
-        driver.get("https://www.instagram.com/accounts/password/reset/")
+        driver.get("https://www.instagram.com/accounts/login/")
     except WebDriverException:
         result = "Site could not be reached, try again"
         return result
     try:
-        assert "Reset Password" in driver.title
+        assert "Login • Instagram" in driver.title
     except AssertionError:
         result = "Site could not be loaded properly, try again"
         return result
     sleep(1.5)
-    user = driver.find_element_by_id("cppEmailOrUsername")
+    user = driver.find_element_by_name("username")
     user.send_keys(email)
     user.send_keys(Keys.RETURN)
     #driver.find_element_by_tag_name("button").click()
     sleep(2)
-    if "Thanks! Please check" in driver.page_source:
+    if "Sorry, your password was incorrect." in driver.page_source:
         result = "Found"
     else:
         result = "Not Found"
@@ -175,5 +175,4 @@ def twitchCheck(email):
     else:
         result = "Found"
         return result
-
 
