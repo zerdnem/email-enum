@@ -18,26 +18,21 @@ def quitSelenium():
 
 def instagramCheck(email):
     try:
-        driver.get("https://www.instagram.com/accounts/password/reset/")
+        driver.get("https://www.instagram.com/accounts/login/")
     except WebDriverException:
         result = "Site could not be reached, try again"
         return result
-    try:
-        assert "Reset Password" in driver.title
-    except AssertionError:
-        result = "Site could not be loaded properly, try again"
-        return result
-    sleep(1.5)
-    user = driver.find_element_by_id("cppEmailOrUsername")
-    user.send_keys(email)
-    user.send_keys(Keys.RETURN)
-    #driver.find_element_by_tag_name("button").click()
-    sleep(2)
-    if "Thanks! Please check" in driver.page_source:
-        result = "Found"
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.NAME, 'username')))
+    login_form = driver.find_element_by_name('username')
+    pass_form = driver.find_element_by_name('password')
+    login_form.send_keys(email)
+    pass_form.send_keys('checkinstagram')
+    pass_form.send_keys(Keys.RETURN)
+    time.sleep(1)
+    if 'Sorry, your password was incorrect' in driver.page_source:
+        return 'Found'
     else:
-        result = "Not Found"
-    return result
+        return 'Not Found'
 
 def twitterCheck(email):
     try:
@@ -96,34 +91,31 @@ def snapchatCheck(email):
 
 def facebookCheck(email):
     try:
-        driver.get("https://www.facebook.com/login/identify/?ctx=recover&ars=royal_blue_bar")
+        driver.get("https://www.facebook.com/login/device-based/regular/login")
     except WebDriverException:
         result = "Site could not be reached, try again"
         return result
     try:
-        assert "Forgot Password" in driver.title
+        assert "Facebook" in driver.title
     except AssertionError:
         result = "Site could not be loaded properly, try again"
         return result
     sleep(1)
-    user = driver.find_element_by_xpath('//*[@id="identify_email"]')
-    user.send_keys(email)
-    user.send_keys(Keys.ENTER)
-    #driver.find_element_by_xpath('//*[@id="u_0_2"]').click()
-    sleep(2)
-    if "No Search Results" in driver.page_source:
-        result = "Not Found"
-        return result
-    if "No Search Results" and "No longer have access to these?" in driver.page_source:
-        result = "Found"
-        return result
+    login_form = driver.find_element_by_name('email')
+    pass_form = driver.find_element_by_name('pass')
+    login_form.send_keys(email)
+    pass_form.send_keys('checkfacebook')
+    pass_form.send_keys(Keys.RETURN)
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.ID, 'header_block')))
+    if 'Log Into Facebook' in driver.page_source:
+        return 'Not Found'
     else:
-        result = "Captcha encountered, you'll have to check this manually"
-        return result
-
+        name = driver.find_element_by_xpath("//div[@id='header_block']/span//span").text
+        return 'Found ' + name # String like 'Found Log in as FirstName LastName'
+        
 def yougoogleCheck(email):
     try:
-        driver.get("https://accounts.google.com/signin/v2/identifier?hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin")
+        driver.get("https://accounts.google.com/signin/v2/identifier?hl=en")
     except WebDriverException:
         result = "Site could not be reached, try again"
         return result
@@ -161,10 +153,10 @@ def twitchCheck(email):
         assert "Discover" in driver.page_source
     except AssertionError:
         result = "Site could not be loaded properly, try again"
-    driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/nav/div/div[5]/div/div[1]/button").click()
-    waitforuser = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[1]/div/div[2]/input")))
-    user = driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[1]/div/div[2]/input")
-    password = driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div[1]/div/div/form/div/div[2]/div/div[1]/div[2]/div[1]/input")
+    driver.find_element_by_xpath("//button[@data-a-target='login-button']").click()
+    waitforuser = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, "//input[@autocomplete='username']")))
+    user = driver.find_element_by_xpath("//input[@autocomplete='username']")
+    password = driver.find_element_by_xpath("//input[@type='password']")
     user.send_keys(email)
     password.send_keys("123456789")
     password.send_keys(Keys.ENTER)
