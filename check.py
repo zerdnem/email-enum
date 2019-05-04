@@ -6,6 +6,7 @@ import click
 import pyfiglet
 from termcolor import colored
 
+from pwn_db import PwnDb
 from sites import Check
 
 
@@ -19,7 +20,8 @@ def ascii_banner():
 @click.option('--output', help='Output results into file')
 @click.option('--proxy', is_flag=True, help='Use proxybroker')
 @click.option('--non-headless', is_flag=True, help='Non headless mode')
-def email_enum(email, output, proxy, non_headless):
+@click.option('--pwndb', is_flag=True, help='Check leaks in PwnDB')
+def email_enum(email, output, proxy, non_headless, pwndb):
     print(colored(ascii_banner(), 'magenta'))
     print(colored("Author: ", 'green') + "Frinto, yevgen2020")
     print(colored("Version: ", 'green') + colored("v1.2", 'yellow'))
@@ -39,6 +41,7 @@ def email_enum(email, output, proxy, non_headless):
 
     excl = colored("[!] ", "yellow")
     excl2 = colored("[*] ", "magenta")
+    excl3 = colored("[pwndb] ", "magenta")
 
     print(excl + "Checking Instagram...")
     insta_response = checker.instagram_check()
@@ -58,6 +61,11 @@ def email_enum(email, output, proxy, non_headless):
     print(excl + "Checking Twitch...")
     twitch_response = checker.twitch_check()
 
+    if pwndb:
+        print(excl + "Checking PwnDB...")
+        db_check = PwnDb(email)
+        db_response = db_check.check()
+
     if proxy_broker:
         proxy_broker.kill()
     checker.quit_selenium()
@@ -72,6 +80,12 @@ def email_enum(email, output, proxy, non_headless):
     print(excl2 + "Google/Youtube: " + gooyou_response)
     print(excl2 + "Twitch: " + twitch_response)
 
+    if db_response:
+        if type(db_response) is str:
+            print(excl3 + db_response)
+        if type(db_response) is list:
+            for i in db_response:
+                print(excl3 + i)
     if output:
         outputfile = open(output, "a")
         listout = ["Instagram: " + insta_response, "Twitter: " + twit_response, "Snapchat: " + snap_response,

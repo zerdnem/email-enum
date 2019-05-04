@@ -16,6 +16,7 @@
 * Termcolor => 1.1
 * PyFiglet => 0.8
 * Proxybroker
+* Pysocks
 
 ## Installation
 ### Linux
@@ -37,7 +38,7 @@ docker run --rm -it emailenum <target email>
 ## Usage
 
 `python3 check.py email@gmail.com` or `./check.py email@gmail.com`
-option `--proxy` and `--non-headless` have been added 
+option `--proxy`, `--pwndb` and `--non-headless` have been added 
 
 ## To-Do's
 
@@ -46,15 +47,28 @@ option `--proxy` and `--non-headless` have been added
 * Increased Verbosity
 * ~~More arguments~~
 * ~~Non-Headless mode~~
-* integrate automatically checking via pwndb
+* ~~integrate automatically checking via pwndb~~
+* add support socks proxy
 
 *and much more...*
 
 ##Proxy
 With option `--proxy` [Proxybroker](https://github.com/constverum/ProxyBroker) wiil be run local proxy server on 8888
  port and will be create pull  from min 5  HTTPS proxy. Your don't need to search public proxies , all will be done 
- automatically.
+ automatically. Note that proxies are public and often in the headers send your real IP to the server.
+
+## PwnDB
+It's TOR service which contains
+data from 1.4 billion breach compilation as email:password. Before using `--pwndb` ensure that service tor has been 
+installed, started and listen 9050 port
+
+Results `python check.py somebody@example.com --pwndb`
+
+
+![Demo Result](http://i.piccy.info/i9/5916bd8f70f9b152a41c4b6693de6e57/1556956944/257875/1315967/screen111.png)
 
 ## Disclaimer
 
-This program is done entirely via web scraping, if a website changes its element variables or layout, you might need to wait for an updated version of Email-Enum or feel free to contribute.
+The use of the email-enum is COMPLETE RESPONSIBILITY of the END-USER. Developers assume NO liability and are NOT responsible for any misuse or damage caused by this program.
+Email-enum is done entirely via web scraping, if a website changes its element variables or layout, you might need to 
+wait for an updated version of Email-Enum or feel free to contribute.

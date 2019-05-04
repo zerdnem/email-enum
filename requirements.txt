@@ -1,0 +1,7 @@
+proxybroker>=0.3.2
+pyfiglet>=0.8.post1
+selenium>=3.141.0
+termcolor>=1.1.0
+Click>=7.0
+requests>=2.18.4
+PySocks>=1.6.8
