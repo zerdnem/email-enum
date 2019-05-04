@@ -52,7 +52,7 @@ option `--proxy`, `--pwndb` and `--non-headless` have been added
 
 *and much more...*
 
-##Proxy
+## Proxy
 With option `--proxy` [Proxybroker](https://github.com/constverum/ProxyBroker) wiil be run local proxy server on 8888
  port and will be create pull  from min 5  HTTPS proxy. Your don't need to search public proxies , all will be done 
  automatically. Note that proxies are public and often in the headers send your real IP to the server.
