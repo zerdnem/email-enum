@@ -53,14 +53,12 @@ option `--proxy`, `--pwndb` and `--non-headless` have been added
 *and much more...*
 
 ## Proxy
-With option `--proxy` [Proxybroker](https://github.com/constverum/ProxyBroker) wiil be run local proxy server on 8888
- port and will be create pull  from min 5  HTTPS proxy. Your don't need to search public proxies , all will be done 
- automatically. Note that proxies are public and often in the headers send your real IP to the server.
+With option `--proxy`, [Proxybroker](https://github.com/constverum/ProxyBroker) will run a local proxy server on port 8888 and will requests 5 HTTPS proxies. You don't need to search for public proxies, everything is done automatically. Note that proxies are public and often in the headers you send your real IP to the server.
 
 ## PwnDB
-It's TOR service which contains
-data from 1.4 billion breach compilation as email:password. Before using `--pwndb` ensure that service tor has been 
-installed, started and listen 9050 port
+PwnDB is a TOR service which contains
+data from 1.4 billion breach compilations as email:password. Before using `--pwndb` ensure that service tor has been 
+installed, started and listening 9050 port
 
 Results `python check.py somebody@example.com --pwndb`
 
