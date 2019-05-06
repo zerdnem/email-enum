@@ -53,7 +53,7 @@ option `--proxy`, `--pwndb` and `--non-headless` have been added
 *and much more...*
 
 ## Proxy
-The option `--proxy`, [Proxybroker](https://github.com/constverum/ProxyBroker) will run a local proxy server on port 8888 and request 5 HTTPS proxies. You don't need to search for public proxies, everything is done automatically. Note that proxies are public and often in the headers you send your real IP to the server.
+The option `--proxy` uses [Proxybroker](https://github.com/constverum/ProxyBroker) which will run a local proxy server on port 8888 and request 5 HTTPS proxies. You don't need to search for public proxies, everything is done automatically. Note that proxies are public and often in the headers you send your real IP to the server.
 
 ## PwnDB
 PwnDB is a TOR service which contains
