@@ -79,13 +79,17 @@ def email_enum(email, output, proxy, non_headless, pwndb):
     print(excl2 + "Facebook: " + face_response)
     print(excl2 + "Google/Youtube: " + gooyou_response)
     print(excl2 + "Twitch: " + twitch_response)
+    
 
-    if db_response:
-        if type(db_response) is str:
-            print(excl3 + db_response)
-        if type(db_response) is list:
-            for i in db_response:
-                print(excl3 + i)
+    try:
+        if db_response:
+            if type(db_response) is str:
+                print(excl3 + db_response)
+            if type(db_response) is list:
+                for i in db_response:
+                    print(excl3 + i)
+    except NameError:
+        sys.exit()
     if output:
         outputfile = open(output, "a")
         listout = ["Instagram: " + insta_response, "Twitter: " + twit_response, "Snapchat: " + snap_response,
