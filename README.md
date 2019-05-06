@@ -56,7 +56,7 @@ The option `--proxy` uses [Proxybroker](https://github.com/constverum/ProxyBroke
 
 ## PwnDB
 PwnDB is a TOR service which contains
-data from 1.4 billion breach compilations. Before using `--pwndb` ensure that service tor has been 
+data from 1.4 billion breach compilations. Before using `--pwndb` ensure that tor has been 
 installed, started and listening 9050 port
 
 Results `python check.py somebody@example.com --pwndb`
