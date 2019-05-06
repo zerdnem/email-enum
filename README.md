@@ -46,8 +46,8 @@ docker run --rm -it emailenum <target email>
 * Increased Verbosity
 * ~~More arguments~~
 * ~~Non-Headless mode~~
-* ~~integrate automatically checking via pwndb~~
-* add support socks proxy
+* ~~Integrate automatically checking via pwndb~~
+* Add support for Socks proxy
 
 *and much more...*
 
