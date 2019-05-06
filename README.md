@@ -38,7 +38,6 @@ docker run --rm -it emailenum <target email>
 ## Usage
 
 `python3 check.py email@gmail.com` or `./check.py email@gmail.com`
-option `--proxy`, `--pwndb` and `--non-headless` have been added 
 
 ## To-Do's
 
