@@ -9,13 +9,13 @@ virtualenv venv
 ### Sample output
 ```json
 {
-    facebook: "Not Found",
-    google: "[33mCaptcha encountered, you'll have to check this manually[0m",
-    instagram: "Not Found",
-    snapchat: "[33mCaptcha encountered, you'll have to check this manually[0m",
-    twitch: "[32mFound[0m",
-    twitter: "[33mExceeded maximum tries, try again later[0m",
-    youtube: "[33mCaptcha encountered, you'll have to check this manually[0m"
+    "facebook": "Not Found",
+    "google": "[33mCaptcha encountered, you'll have to check this manually[0m",
+    "instagram": "Not Found",
+    "snapchat": "[33mCaptcha encountered, you'll have to check this manually[0m",
+    "twitch": "[32mFound[0m",
+    "twitter": "[33mExceeded maximum tries, try again later[0m",
+    "youtube": "[33mCaptcha encountered, you'll have to check this manually[0m"
 }
 ```
 
