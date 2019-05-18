@@ -10,6 +10,8 @@ pip3 install selenium --user
 pip3 install pyfiglet --user
 pip3 install proxybroker --user
 pip3 install pysocks --user
+pip3 install Flask --user
+pip3 install Flask-Caching --user
 mkdir -p ~/.local/bin/
 
 # Install geckodriver on linux machines (64-bit or 32-bit)

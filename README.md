@@ -1,3 +1,24 @@
+# Email-Enum API
+
+### Setup
+```bash
+virtualenv venv
+. venv/bin/activate
+./setup.sh
+```
+### Sample output
+```json
+{
+    facebook: "Not Found",
+    google: "[33mCaptcha encountered, you'll have to check this manually[0m",
+    instagram: "Not Found",
+    snapchat: "[33mCaptcha encountered, you'll have to check this manually[0m",
+    twitch: "[32mFound[0m",
+    twitter: "[33mExceeded maximum tries, try again later[0m",
+    youtube: "[33mCaptcha encountered, you'll have to check this manually[0m"
+}
+```
+
 # Email-Enum
 [![Version](https://img.shields.io/badge/Version-v1.2-brightgreen.svg)](https://shields.io/)
 [![Status](https://img.shields.io/badge/Status-Stable-brightgreen.svg)](https://shields.io/)
